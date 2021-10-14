@@ -1,19 +1,22 @@
 pessoas = [{'nome': 'Arthur', 'idade': 19}, {'nome': 'Maria', 'idade': 4}, {'nome': 'José', 'idade': 39},
            {'nome': 'Pedro', 'idade': 35}, {'nome': 'Joana', 'idade': 50}]
 
-#testa se os valores inseridos sao validos
+
+# testa se os valores inseridos sao validos
 def leiaint(n):
     try:
         return int(n)
-    except NameError:
+    except:
         return n
 
-#adiciona um dicionario na lista
+
+# adiciona um dicionario na lista
 def adicionarpessoas(nome, idade):
     pessoas.append({'nome': nome, 'idade': int(idade)})
     return f'{nome} de {idade} anos adicionado(a) à lista.'
 
-#o menu para despoluir o codigo
+
+# o menu para despoluir o codigo
 def menu():
     print("-=" * 16)
     print("[1]Adicionar pessoas à lista\n"
@@ -22,7 +25,8 @@ def menu():
           "[4]Outros...")
     print("-=" * 16)
 
-#outro menu
+
+# outro menu
 def menuop2():
     print("-=" * 10)
     print("[1]Ordem de idade\n"
@@ -30,14 +34,16 @@ def menuop2():
           "[3]Ordem de cadastro")
     print("-=" * 10)
 
-#verifica se o nome digitado existe na lista
+
+# verifica se o nome digitado existe na lista
 def achapessoa(nome):
     for pessoa in pessoas:
         if pessoa['nome'] == nome:
-            return 1
+            return pessoa
     return 0
 
-#verifica e retorna a pessoa se achar
+
+# verifica e retorna a pessoa se achar
 def idade(n):
     for pessoa in pessoas:
         if pessoa['nome'] == n:
@@ -94,24 +100,42 @@ while True:
 
     elif opcao == 3:
         while True:
-            nome = input("Digite um nome presente na lista para saber sua classificação: ").strip().capitalize()
-            result = achapessoa(nome)
-            if result == 1:
+            nome = leiaint(input("Digite um nome presente na lista para saber sua classificação ou digite [1] para "
+                                 "ver toda lista classificada: "))
+            if type(nome) == int and nome != 1:
+                continue
+            elif type(nome) == int and nome == 1:
                 break
+            nome = nome.strip().capitalize()
+            pessoa = achapessoa(nome)
+            if pessoa != 0:
+                break
+        if nome == 1:
+            for classe in pessoas:
+                if 0 <= classe['idade'] < 12:
+                    print(f'{classe["nome"]} é Criança.')
 
-        pessoa = (idade(nome))
+                elif 12 <= classe['idade'] <= 19:
+                    print(f'{classe["nome"]} é Adolescente.')
 
-        if 0 <= pessoa['idade'] < 12:
-            print(f'{pessoa["nome"]} é Criança.')
+                elif 19 < classe['idade'] < 65:
+                    print(f'{classe["nome"]} é Adulto(a).')
 
-        elif 12 <= pessoa['idade'] <= 19:
-            print(f'{pessoa["nome"]} é Adolescente.')
+                elif 65 <= classe['idade']:
+                    print(f'{classe["nome"]} é Idoso(a).')
+        else:
+            if 0 <= pessoa['idade'] < 12:
+                print(f'{pessoa["nome"]} é Criança.')
 
-        elif 19 < pessoa['idade'] < 65:
-            print(f'{pessoa["nome"]} é Adulto(a).')
+            elif 12 <= pessoa['idade'] <= 19:
+                print(f'{pessoa["nome"]} é Adolescente.')
 
-        elif 65 <= pessoa['idade']:
-            print(f'{pessoa["nome"]} é Idoso(a).')
+            elif 19 < pessoa['idade'] < 65:
+                print(f'{pessoa["nome"]} é Adulto(a).')
+
+            elif 65 <= pessoa['idade']:
+                print(f'{pessoa["nome"]} é Idoso(a).')
+
 
     elif opcao == 4:
         print("[1]Ver ultimo adicionado\n"
