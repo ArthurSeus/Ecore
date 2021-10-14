@@ -110,6 +110,7 @@ while True:
             pessoa = achapessoa(nome)
             if pessoa != 0:
                 break
+
         if nome == 1:
             for classe in pessoas:
                 if 0 <= classe['idade'] < 12:
@@ -123,6 +124,7 @@ while True:
 
                 elif 65 <= classe['idade']:
                     print(f'{classe["nome"]} é Idoso(a).')
+                    
         else:
             if 0 <= pessoa['idade'] < 12:
                 print(f'{pessoa["nome"]} é Criança.')
