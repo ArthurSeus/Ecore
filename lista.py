@@ -43,13 +43,6 @@ def achapessoa(nome):
     return 0
 
 
-# verifica e retorna a pessoa se achar
-def idade(n):
-    for pessoa in pessoas:
-        if pessoa['nome'] == n:
-            return pessoa
-
-
 while True:
     print("-=" * 16)
     print(f'Lista de cadastros:')
@@ -124,7 +117,7 @@ while True:
 
                 elif 65 <= classe['idade']:
                     print(f'{classe["nome"]} é Idoso(a).')
-                    
+
         else:
             if 0 <= pessoa['idade'] < 12:
                 print(f'{pessoa["nome"]} é Criança.')
@@ -137,7 +130,6 @@ while True:
 
             elif 65 <= pessoa['idade']:
                 print(f'{pessoa["nome"]} é Idoso(a).')
-
 
     elif opcao == 4:
         print("[1]Ver ultimo adicionado\n"
