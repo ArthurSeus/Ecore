@@ -56,13 +56,18 @@ while True:
             break
 
     if opcao == 1:
-        print("Adicionando pessoas na lista...")
-        lastaddnome = str(input('Nome da pessoa que deseja adicionar: ')).strip().capitalize()
         while True:
-            lastaddidade = leiaint(input(f'Idade de {lastaddnome}: '))
-            if type(lastaddidade) == int:
+            quantos = leiaint(input("Quantas pessoas quer adicionar? "))
+            if type(opcao) == int:
                 break
-        print(adicionarpessoas(nome=lastaddnome, idade=lastaddidade))
+        print("Adicionando pessoas na lista...")
+        for c in range(0, quantos):
+            lastaddnome = str(input('Nome da pessoa que deseja adicionar: ')).strip().capitalize()
+            while True:
+                lastaddidade = leiaint(input(f'Idade de {lastaddnome}: '))
+                if type(lastaddidade) == int:
+                    break
+            print(adicionarpessoas(nome=lastaddnome, idade=lastaddidade))
         # lastaddnome e lastaddidade para ter acesso aos ultimos dados adicionados se quiser
 
     elif opcao == 2:
@@ -89,7 +94,7 @@ while True:
 
     elif opcao == 3:
         while True:
-            nome = input("Digite um nome presente na lista para saber sua classificação: ")
+            nome = input("Digite um nome presente na lista para saber sua classificação: ").strip().capitalize()
             result = achapessoa(nome)
             if result == 1:
                 break
