@@ -11,9 +11,9 @@ def leiaint(n):
 
 
 # adiciona um dicionario na lista
-def adicionarpessoas(nome, idade):
-    pessoas.append({'nome': nome, 'idade': int(idade)})
-    return f'{nome} de {idade} anos adicionado(a) à lista.'
+def adicionarpessoas(n, a):
+    pessoas.append({'nome': n, 'idade': int(a)})
+    return f'{n} de {a} anos adicionado(a) à lista.'
 
 
 # o menu para despoluir o codigo
@@ -36,10 +36,10 @@ def menuop2():
 
 
 # verifica se o nome digitado existe na lista
-def achapessoa(nome):
-    for pessoa in pessoas:
-        if pessoa['nome'] == nome:
-            return pessoa
+def achapessoa(p):
+    for gente in pessoas:
+        if gente['nome'] == p:
+            return gente
     return 0
 
 
@@ -66,7 +66,7 @@ while True:
                 lastaddidade = leiaint(input(f'Idade de {lastaddnome}: '))
                 if type(lastaddidade) == int:
                     break
-            print(adicionarpessoas(nome=lastaddnome, idade=lastaddidade))
+            print(adicionarpessoas(n=lastaddnome, a=lastaddidade))
         # lastaddnome e lastaddidade para ter acesso aos ultimos dados adicionados se quiser
 
     elif opcao == 2:
